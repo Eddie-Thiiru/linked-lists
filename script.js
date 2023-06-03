@@ -17,7 +17,25 @@ const LinkedList = () => {
     console.log(list);
   };
 
-  const size = () => {};
+  const size = () => {
+    let obj = list;
+    let count = 0;
+
+    function countNodes(obj) {
+      for (let key in obj) {
+        console.log(key);
+        if (typeof obj[key] === "object") {
+          return countNodes(obj[key]);
+        } else {
+          count += 1;
+        }
+      }
+    }
+    countNodes(obj);
+
+    console.log(count);
+    return count;
+  };
 
   const head = () => {
     console.log(list.key);
@@ -60,3 +78,6 @@ myLinkedList.append(300);
 
 // Adds a new node containing value to the start of the list
 myLinkedList.prepend(400);
+
+//  Returns the total number of nodes in the list
+myLinkedList.size();
