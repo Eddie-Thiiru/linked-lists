@@ -1,23 +1,21 @@
 const Node = () => {
-  let list = {
-    value: null,
-    next: null,
-  };
+  let value = null;
+  let next = null;
 
-  return list;
+  return { value, next };
 };
 
 const LinkedList = () => {
-  let list = Node();
+  let node = Node();
   let listSize = 0;
 
   const append = (value) => {
-    if (list.value === null) {
-      list = { value: value };
-      list.next = null;
+    if (node.value === null) {
+      node = { value: value };
+      node.next = null;
       listSize += 1;
     } else {
-      let current = list;
+      let current = node;
 
       while (current.next !== null) {
         current = current.next;
@@ -29,7 +27,7 @@ const LinkedList = () => {
   };
 
   const prepend = (value) => {
-    list = { value: value, next: list };
+    node = { value: value, next: node };
     listSize += 1;
   };
 
@@ -38,11 +36,11 @@ const LinkedList = () => {
   };
 
   const head = () => {
-    return list;
+    return node;
   };
 
   const tail = () => {
-    let current = list.next;
+    let current = node.next;
 
     while (current.next !== null) {
       current = current.next;
@@ -52,7 +50,7 @@ const LinkedList = () => {
   };
 
   const at = (index) => {
-    let current = list;
+    let current = node;
     let position = 0;
 
     while (current) {
@@ -69,7 +67,7 @@ const LinkedList = () => {
 
   const pop = () => {
     let lastNode = tail();
-    let current = list;
+    let current = node;
 
     while (current.next !== lastNode) {
       current = current.next;
@@ -79,7 +77,7 @@ const LinkedList = () => {
   };
 
   const contains = (value) => {
-    let current = list;
+    let current = node;
 
     while (current) {
       if (current.value === value) {
@@ -92,7 +90,7 @@ const LinkedList = () => {
   };
 
   const find = (value) => {
-    let current = list;
+    let current = node;
     let index = 0;
 
     while (current) {
@@ -109,7 +107,7 @@ const LinkedList = () => {
 
   const toString = () => {
     let string = "";
-    let current = list;
+    let current = node;
 
     while (current) {
       string += `${current.value.toString()} next: `;
